@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Interview Coach</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <p class="badge">AI Career Project</p>
+        <h1>AI Interview Coach</h1>
+        <p class="subtitle">Practice interview questions, answer them, and get AI feedback with score, improvements, and better sample answers.</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>1. Generate Questions</h2>
+        <label>Job Role</label>
+        <input id="role" placeholder="Example: Software Engineer, AI Intern, Data Analyst" />
+
+        <div class="row">
+          <div>
+            <label>Level</label>
+            <select id="level">
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </div>
+          <div>
+            <label>Questions</label>
+            <input id="count" type="number" min="1" max="10" value="5" />
+          </div>
+        </div>
+
+        <label>Question Type</label>
+        <select id="questionType">
+          <option>Mixed</option>
+          <option>HR</option>
+          <option>Technical</option>
+          <option>Behavioral</option>
+          <option>Project Based</option>
+        </select>
+
+        <button onclick="generateQuestions()">Generate Questions</button>
+        <p id="generateStatus" class="status"></p>
+      </section>
+
+      <section class="card" id="answerSection">
+        <h2>2. Answer & Get Feedback</h2>
+        <label>Selected Question</label>
+        <textarea id="selectedQuestion" placeholder="Select a question from the list or type your own"></textarea>
+
+        <label>Your Answer</label>
+        <textarea id="answer" placeholder="Write your interview answer here..."></textarea>
+
+        <button onclick="evaluateAnswer()">Evaluate My Answer</button>
+        <p id="evaluateStatus" class="status"></p>
+      </section>
+    </main>
+
+    <section class="card full">
+      <h2>Generated Questions</h2>
+      <div id="questions" class="questions empty">No questions yet. Generate questions first.</div>
+    </section>
+
+    <section class="card full">
+      <h2>AI Feedback</h2>
+      <div id="feedback" class="feedback empty">Your feedback will appear here.</div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
